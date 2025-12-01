@@ -36,8 +36,8 @@ class AuthService {
       if (!isPasswordValid) {
         throw new Error("Invalid password");
       }
-      const token = jwt.sign({ userData: user }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
+      const token = jwt.sign({ userData: userData.id }, process.env.JWT_SECRET, {
+        expiresIn: "300000",
       });
       return token;
     } catch (err) {

@@ -1,7 +1,7 @@
 const express=require('express')
 const AuthController=require('../controller/auth.controller')
-const validate =require('../utilities/validate.middleware')
-const {AuthSchema}=require('../utilities/validations.schema')
+const validate =require('../utilities/middlewares/validate.middleware')
+const {AuthSchema}=require('../utilities/middlewares/validations.schema')
 
 const router=express.Router()
 

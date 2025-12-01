@@ -20,7 +20,7 @@ async function connectDB() {
       console.log("Connected to SQL database successfully");
 
       // Sync all models with the database
-      await sequelize.sync({ force: false });
+      await sequelize.sync({ force: false ,alter: true });
       console.log("Database models synced successfully");
       // In your database connection file (likely sequelize config)
       console.log("Sequelize query caching:", sequelize.options.cache); // Should be undefined/false

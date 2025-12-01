@@ -1,6 +1,8 @@
 module.exports = (schema) =>{
     return (req, res, next) => {
-        const {error,value} = schema.validate(req.body);
+        const {error,value} = schema.validate(req.body,{
+            allowUnknown: true,
+        });
         if(error){
             return res.status(400).send({message:error.details.map((detail) => detail.message).join(', ')});
         }

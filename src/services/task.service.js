@@ -1,4 +1,6 @@
 const TaskModel = require("../model/task.model");
+const sendEmail = require("../services/email.service");
+const  getTasksNearToExpire  = require("../utilities/date.format");
 class TaskService {
   async createTask(taskData, userId) {
     try {
@@ -28,16 +30,42 @@ class TaskService {
     }
   }
 
-  async getTasks(userId,query={}) {
+  async getTasks(userId, query = {}) {
     try {
-      const {status='',priority='',dueDate=''}=query;
-      console.log("Query Params:", status,priority,dueDate);
-      let filter={userId}
-      if(status)filter.status=status;
-      if(priority)filter.priority=priority;
-      if(dueDate)filter.dueDate=dueDate;
-      console.log("Filter Object:", filter);
-      return await TaskModel.find(filter);
+      const {
+        status = "",
+        priority = "",
+        dueDate = "",
+        pageSize = "",
+        pageNumber = "",
+      } = query;
+
+      let filter = { userId };
+
+      if (status) filter.status = status;
+      if (priority) filter.priority = priority;
+      if (dueDate) filter.dueDate = dueDate;
+      let result;
+      if (pageSize && pageNumber) {
+        result = await TaskModel.find(filter)
+          .skip((pageNumber - 1) * pageSize)
+          .limit(pageSize);
+      } else result = await TaskModel.find(filter);
+
+      if (result.length === 0) {
+        throw new Error("No tasks found");
+      }
+
+      let tasksNearToExpire = [...getTasksNearToExpire(result)];
+    
+      if (tasksNearToExpire.length > 0) {
+        tasksNearToExpire = tasksNearToExpire.map(function (tasks) {
+          return tasks.title;
+        });
+
+        await sendEmail(userId, tasksNearToExpire);
+      }
+      return result;
     } catch (err) {
       console.error("Error fetching task by ID:", err);
     }
@@ -55,10 +83,11 @@ class TaskService {
   }
   async deleteTask(id) {
     try {
-      return await TaskModel.findByIdAndDelete({_id:id});
+      return await TaskModel.findByIdAndDelete({ _id: id });
     } catch (err) {
       console.error("Error deleting task:", err);
     }
   }
 }
+
 module.exports = new TaskService();

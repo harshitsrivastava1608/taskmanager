@@ -6,7 +6,6 @@ exports.AuthSchema = Joi.object({
 })
 
 exports.TaskSchema = Joi.object({
-    // userId: Joi.number().required(),
     title: Joi.string().min(3).required(),
     description: Joi.string().optional(),
     priority: Joi.string().valid('Low', 'Medium', 'High').required(),

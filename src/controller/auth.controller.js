@@ -1,4 +1,5 @@
 const AuthService = require("../services/auth.service");
+const { successResponse, errorResponse } = require("../utilities/response.messages.");
 
 exports.registerUser = async (req, res) => {
   try {
@@ -9,10 +10,10 @@ exports.registerUser = async (req, res) => {
     }
     const result = await AuthService.registerUser(req.body);
     console.log("User registered:", result.id);
-    res.status(201).send({message:"User registered successfully"});
+    successResponse( res, 201, "User registered successfully", { userId: result.id });
   } catch (err) {
     console.error("Error in registerUser controller:", err);
-    res.status(500).send({message:"Error registering user",data: err});
+    errorResponse(  res, 500, "Error registering user", [err.message]);
   }
 };
 
@@ -21,13 +22,10 @@ exports.loginUser = async (req, res) => {
     const result = await AuthService.loginUser(req.body);
     console.log("User Logged In:", result);
     if(result)
-    res
-      .status(200)
-      .send({ message: "User LoggedIn successfully", data: result });
-    else
-    res.status(401).send({ message: "Invalid email or password" });
+      successResponse(  res, 200, "User LoggedIn successfully", result);
+    
   } catch (err) {
-    res.status(500).send({ message: `Error logging user : ${err}` });
+    errorResponse(  res, 500, "Error logging user in", [err.message]);
   }
 };
 

@@ -1,15 +1,16 @@
 const AuthService = require("../services/auth.service");
 const { successResponse, errorResponse } = require("../utilities/response.messages.");
+const logger = require("../utilities/logger");
 
 exports.registerUser = async (req, res) => {
   try {
-    console.log("Request Body:", req.body);
+    logger.info("Request Body:", req.body);
     let resultFromDB=await AuthService.getUserByEmail(req.body.email);
     if(resultFromDB){
       return res.status(400).send({message:"User already exists with this email"})
     }
     const result = await AuthService.registerUser(req.body);
-    console.log("User registered:", result.id);
+    logger.info("User registered:", result.id);
     successResponse( res, 201, "User registered successfully", { userId: result.id });
   } catch (err) {
     console.error("Error in registerUser controller:", err);
@@ -20,7 +21,7 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const result = await AuthService.loginUser(req.body);
-    console.log("User Logged In:", result);
+    logger.info("User Logged In:", result);
     if(result)
       successResponse(  res, 200, "User LoggedIn successfully", result);
     

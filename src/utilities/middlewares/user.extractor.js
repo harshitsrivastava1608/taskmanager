@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const logger = require("../logger");
 exports.extractUser = (req, res, next) => {
  
   const token = req.headers.authorization;
@@ -10,7 +11,7 @@ exports.extractUser = (req, res, next) => {
     if (err) {
       return res.status(401).send({ message: "Invalid token" });
     }
-    console.log("Decoded User:", decoded);
+    logger.info("Decoded User:", decoded);
     req.userId = decoded.userData;
     next();
   });

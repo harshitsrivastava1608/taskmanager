@@ -1,10 +1,11 @@
 const TaskModel = require("../model/task.model");
 const sendEmail = require("../services/email.service");
 const  getTasksNearToExpire  = require("../utilities/date.format");
+const logger = require("../utilities/logger");
 class TaskService {
   async createTask(taskData, userId) {
     try {
-      console.log(taskData, +userId);
+      logger.info(taskData, +userId);
       let { title, description, dueDate, priority, status } = taskData;
       userId = +userId;
       const newTask = new TaskModel({

@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
+const logger = require("../utilities/logger");
 
 async function connectDB() {
   try {
     let connection;
     if (!connection) {
       connection = await mongoose.connect(`${process.env.MONGO_URI}`, {});
-      console.log("Connected to NoSQL database successfully");
+      logger.info("Connected to NoSQL database successfully");
     } else {
-      console.log("Re using the DB Connection");
+      logger.info("Re using the DB Connection");
     }
   } catch (err) {
-    console.error("Error connecting to NoSQL database", err);
+    logger.error("Error connecting to NoSQL database", err);
   }
 }
 module.exports = connectDB;

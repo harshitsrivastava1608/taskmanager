@@ -1,4 +1,5 @@
 const { Resend } = require("resend");
+const logger = require("../utilities/logger");
 
 const resend = new Resend("re_2QDCTFoV_Bd9xNHjyNyLHvv7eG4PoKMW1");
 async function sendEmail(userId, tasksNearToExpire) {
@@ -8,6 +9,6 @@ async function sendEmail(userId, tasksNearToExpire) {
     subject: `Hello ${userId}`,
     html: `<p>Dear User These are the tasks due today: ${tasksNearToExpire}  <strong>first email</strong>!</p>`,
   });
-  console.log("Email sent successfully");
+  logger.info("Email sent successfully");
 }
 module.exports = sendEmail;

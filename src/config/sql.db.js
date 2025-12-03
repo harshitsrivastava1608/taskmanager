@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const logger = require("../utilities/logger");
 
 const {
   SQL_DB_NAME,
@@ -21,15 +22,15 @@ async function connectDB() {
   try {
     if (!connection) {
       connection = await sequelize.authenticate();
-      console.log("Connected to SQL database successfully");
+      logger.info("Connected to SQL database successfully");
       // Sync all models with the database
       await sequelize.sync({ force: false });
-      console.log("Database models synced successfully");
+      logger.info("Database models synced successfully");
     } else {
-      console.log("Re using the DB Connection");
+      logger.info("Re using the DB Connection");
     }
   } catch (err) {
-    console.error("Error connecting to SQL database", err);
+    logger.error("Error connecting to SQL database", err);
   }
 }
 

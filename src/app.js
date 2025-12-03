@@ -1,4 +1,5 @@
 const express= require('express')
+const logger=require('./utilities/logger')
 const app=express()
 app.use(express.json())
 require('dotenv').config()
@@ -10,11 +11,11 @@ const authRoutes=require('./routes/auth.routes')
 const taskRoutes=require('./routes/task.routes')
 
 connectDB().then(()=>{
-    console.log('SQL DB connected from app.js')
+    logger.info('SQL DB connected from app.js')
 })
 
 connectTONoSQLDB().then(()=>{
-    console.log('NoSQL DB connected from app.js')
+    logger.info('NoSQL DB connected from app.js')
 })
 
 

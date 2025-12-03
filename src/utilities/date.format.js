@@ -1,10 +1,11 @@
+const logger = require("./logger");
 const getTasksNearToExpire = (tasks = []) => {
   tasks = tasks.filter((task) => {
     let dueDate = new Date(task.dueDate);
     let currentDate = new Date();
     return sameDay(dueDate, currentDate);
   });
-  console.log("Filtered tasks near to expire: ", tasks);
+  logger.info("Filtered tasks near to expire: ", tasks);
   return tasks;
 };
 const sameDay = (d1, d2) => {

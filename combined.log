@@ -1,0 +1,49 @@
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Server is running on port 3000"}
+{"level":"info","message":"Connected to NoSQL database successfully"}
+{"level":"info","message":"NoSQL DB connected from app.js"}
+{"level":"info","message":"Connected to SQL database successfully"}
+{"level":"info","message":"Database models synced successfully"}
+{"level":"info","message":"SQL DB connected from app.js"}
+{"level":"info","message":"User Logged In:"}
+{"exp":1764788783,"iat":1764788483,"level":"info","message":"Decoded User:","userData":2}
+{"0":{"__v":0,"_id":"692f4584d2e15da17f7925d0","createdAt":"2025-12-02T20:01:08.956Z","description":"description of my second task","dueDate":"Wed Dec 03 2025 20:00:00 GMT+0530 (India Standard Time)","priority":"High","status":"Pending","title":"My Second Task","updatedAt":"2025-12-02T20:01:08.956Z","userId":2},"level":"info","message":"Filtered tasks near to expire: "}
+{"level":"info","message":"Email sent successfully"}
